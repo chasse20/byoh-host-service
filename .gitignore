@@ -1,0 +1,50 @@
+# Build output
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+
+# IDE/user state
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local/service dependency metadata
+**/serviceDependencies.local*.json
+**/ServiceDependencies/local/
+
+# Secrets and certificates
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
+*.crt
+
+# Logs/runtime state
+*.log
+logs/
+*.trace
+
+# Packages/caches
+packages/
+node_modules/
+.nuget/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Installer/build artifacts
+*.msi
+*.cab
+*.zip

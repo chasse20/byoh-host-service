@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension">
+  <?include config.wxi ?>
+
+  <!-- For pushing updates, keep the UpgradeCode the SAME from before, just increment the version. -->
+  <Product Id="*" Name="$(var.ProductName)" Language="1033" Version="2.2.1" Manufacturer="$(var.Manufacturer)" UpgradeCode="a4cdbaf5-8b95-4630-b89c-21832aa85f79">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Id="*"/>
+
+    <Property Id="MsiLogging" Value="v" />
+
+    <MajorUpgrade AllowSameVersionUpgrades="no" DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]"/>
+
+    <!-- The original installer also harvested the Unreal Pixel Streaming signalling server.
+         That third-party implementation is intentionally omitted from this public copy. -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ManufacturerFolder" Name="$(var.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
+        </Directory>
+      </Directory>
+      <Directory Id="WINDOWSVOLUME">
+        <Directory Id="DataFolder" Name="$(var.ProductName)">
+          <Directory Id="BuildsFolder" Name="Builds"/>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="Installer" Level="1">
+      <ComponentGroupRef Id="BinGroup"/>
+      <Component Id="CreateBuildsFolder" Guid="A964A52D-C0A9-4D45-941E-99DE986144FD" Directory="BuildsFolder">
+        <CreateFolder>
+          <util:PermissionEx User="Users" GenericAll="yes"/>
+          <util:PermissionEx User="Administrators" GenericAll="yes"/>
+        </CreateFolder>
+      </Component>
+    </Feature>
+	</Product>
+</Wix>

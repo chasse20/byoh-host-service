@@ -1,0 +1,31 @@
+# Public portfolio CI: restore and build the host service only.
+# Environment-specific Azure deployment stages and third-party signalling assets are intentionally omitted.
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  displayName: Use .NET 6.0
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x'
+
+- task: DotNetCoreCLI@2
+  displayName: Restore host service
+  inputs:
+    command: restore
+    projects: 'Host_Service/Host.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: Build host service
+  inputs:
+    command: build
+    projects: 'Host_Service/Host.csproj'
+    arguments: '--configuration $(buildConfiguration) --no-restore'
