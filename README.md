@@ -12,7 +12,7 @@ The project-specific signalling integration module is retained under `Reference/
 
 Configuration values in `Host_Service/appsettings.json` use non-production example endpoints. A real deployment requires environment-specific Azure Key Vault, scaling-service, file-share, Unreal build, and signalling-server configuration.
 
-## Technology
+## Stack
 
 - C#/ASP.NET Core/.NET 6
 - Windows Service hosting
