@@ -1,6 +1,6 @@
 # BYOH Host Service
 
-This repository is a sanitized code sample from a platform built in 2019-2023. It is included to demonstrate architecture, systems integration, cloud orchestration, and ownership of a complex production platform. It is not intended to represent my current preferred stack or coding conventions.
+This repository is a sanitized code sample from a platform built in 2019-2023. It is included to demonstrate architecture, systems integration, cloud orchestration, and ownership of a complex production platform.
 
 Build Your Own Home (BYOH) was an online, interactive tool that allowed our customers to view and customize their home in full 3D. It included full support for desktop, mobile and tablet across all mainstream browsers. The BYOH platform was integral to our customer-facing processes, going on to receive significant positive attention after launch and was even featured by Forbes in July 2020.
 
